@@ -1,5 +1,6 @@
 import 'package:education_app/constants/color.dart';
 import 'package:education_app/models/category.dart';
+import 'package:education_app/screens/details_screen.dart';
 import 'package:education_app/widgets/circle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -76,41 +77,64 @@ class Body extends StatelessWidget {
             mainAxisSpacing: 24,
           ),
           itemBuilder: (context, index) {
-            return Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(.1),
-                    blurRadius: 4.0,
-                    spreadRadius: .05,
-                  ), //BoxShadow
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Image.asset(
-                      categoryList[index].thumbnail,
-                      height: 120,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(categoryList[index].name),
-                  const Text("20 courses"),
-                ],
-              ),
+            return CategoryCard(
+              category: categoryList[index],
             );
           },
           itemCount: categoryList.length,
         ),
       ],
+    );
+  }
+}
+
+class CategoryCard extends StatelessWidget {
+  final Category category;
+  const CategoryCard({
+    Key? key,
+    required this.category,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const DetailsScreen(),
+        ),
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(.1),
+              blurRadius: 4.0,
+              spreadRadius: .05,
+            ), //BoxShadow
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: Image.asset(
+                category.thumbnail,
+                height: 120,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(category.name),
+            const Text("20 courses"),
+          ],
+        ),
+      ),
     );
   }
 }
