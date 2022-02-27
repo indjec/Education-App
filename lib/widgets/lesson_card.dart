@@ -1,3 +1,4 @@
+import 'package:education_app/constants/icons.dart';
 import 'package:education_app/models/lesson.dart';
 import 'package:flutter/material.dart';
 
@@ -11,11 +12,11 @@ class LessonCard extends StatelessWidget {
       children: [
         lesson.isPlaying
             ? Image.asset(
-                'assets/icons/play.png',
+                icLearning,
                 height: 45,
               )
             : Image.asset(
-                'assets/icons/play_outlined.png',
+                icPlayNext,
                 height: 45,
               ),
         const SizedBox(
@@ -43,7 +44,15 @@ class LessonCard extends StatelessWidget {
             ],
           ),
         ),
-        lesson.isCompleted ? const Icon(Icons.done) : const Icon(Icons.lock)
+        lesson.isCompleted
+            ? Image.asset(
+                icDone,
+                height: 30,
+              )
+            : Image.asset(
+                icLock,
+                height: 30,
+              ),
       ],
     );
   }

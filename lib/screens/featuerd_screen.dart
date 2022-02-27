@@ -1,4 +1,5 @@
 import 'package:education_app/constants/color.dart';
+import 'package:education_app/constants/size.dart';
 import 'package:education_app/models/category.dart';
 import 'package:education_app/screens/details_screen.dart';
 import 'package:education_app/widgets/circle_button.dart';
@@ -43,22 +44,18 @@ class Body extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
+              Text(
                 "Explore Categories",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
               TextButton(
                 onPressed: () {},
-                child: const Text(
+                child: Text(
                   "See All",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: kPrimaryColor,
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(color: kPrimaryColor),
                 ),
               )
             ],
@@ -124,14 +121,17 @@ class CategoryCard extends StatelessWidget {
               alignment: Alignment.topRight,
               child: Image.asset(
                 category.thumbnail,
-                height: 120,
+                height: kCategoryCardImageSize,
               ),
             ),
             const SizedBox(
               height: 10,
             ),
             Text(category.name),
-            const Text("20 courses"),
+            Text(
+              "${category.noOfCourses.toString()} courses",
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
           ],
         ),
       ),
@@ -171,13 +171,9 @@ class AppBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Hello,\nGood Morning",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               CircleButton(
                 icon: Icons.notifications,

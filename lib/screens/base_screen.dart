@@ -1,4 +1,6 @@
 import 'package:education_app/constants/color.dart';
+import 'package:education_app/constants/icons.dart';
+import 'package:education_app/constants/size.dart';
 import 'package:education_app/screens/featuerd_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -32,45 +34,45 @@ class _BaseScreenState extends State<BaseScreen> {
           items: [
             BottomNavigationBarItem(
               activeIcon: Image.asset(
-                'assets/icons/star.png',
-                height: 24,
+                icFeatured,
+                height: kBottomNavigationBarItemSize,
               ),
               icon: Image.asset(
-                'assets/icons/star_outlined.png',
-                height: 24,
+                icFeaturedOutlined,
+                height: kBottomNavigationBarItemSize,
               ),
               label: "Featured",
             ),
             BottomNavigationBarItem(
               activeIcon: Image.asset(
-                'assets/icons/play.png',
-                height: 24,
+                icLearning,
+                height: kBottomNavigationBarItemSize,
               ),
               icon: Image.asset(
-                'assets/icons/play_outlined.png',
-                height: 24,
+                icLearningOutlined,
+                height: kBottomNavigationBarItemSize,
               ),
               label: "My Learning",
             ),
             BottomNavigationBarItem(
               activeIcon: Image.asset(
-                'assets/icons/heart.png',
-                height: 24,
+                icWishlist,
+                height: kBottomNavigationBarItemSize,
               ),
               icon: Image.asset(
-                'assets/icons/heart_outlined.png',
-                height: 24,
+                icWishlistOutlined,
+                height: kBottomNavigationBarItemSize,
               ),
               label: "Wishlist",
             ),
             BottomNavigationBarItem(
               activeIcon: Image.asset(
-                'assets/icons/settings.png',
-                height: 24,
+                icSetting,
+                height: kBottomNavigationBarItemSize,
               ),
               icon: Image.asset(
-                'assets/icons/settings_outlined.png',
-                height: 24,
+                icSettingOutlined,
+                height: kBottomNavigationBarItemSize,
               ),
               label: "Settings",
             ),

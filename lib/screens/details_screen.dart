@@ -1,7 +1,10 @@
 import 'package:education_app/constants/color.dart';
+import 'package:education_app/constants/icons.dart';
 import 'package:education_app/models/lesson.dart';
+import 'package:education_app/widgets/custom_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:video_player/video_player.dart';
 
 import '../widgets/lesson_card.dart';
 
@@ -35,21 +38,23 @@ class _DetailsScreenState extends State<DetailsScreen> {
               children: [
                 IntrinsicHeight(
                   child: Stack(
-                    children: const [
-                      Align(
-                          child: Text(
-                        'Development',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
+                    children: [
+                      const Align(
+                        child: Text(
+                          'Development',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                          ),
                         ),
-                      )),
+                      ),
                       Positioned(
                         left: 0,
                         child: CustomIconButton(
-                          child: Icon(Icons.arrow_back),
+                          child: const Icon(Icons.arrow_back),
                           height: 35,
                           width: 35,
+                          onTap: () => Navigator.pop(context),
                         ),
                       ),
                     ],
@@ -58,14 +63,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 const SizedBox(
                   height: 25,
                 ),
-                Container(
-                  height: 200,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
+                const CustomVideoPlayer(),
                 const SizedBox(
                   height: 15,
                 ),
@@ -92,7 +90,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 Row(
                   children: [
                     Image.asset(
-                      'assets/icons/star_outlined.png',
+                      icFeaturedOutlined,
                       height: 20,
                     ),
                     const Text(
@@ -166,10 +164,10 @@ class PlayList extends StatelessWidget {
       child: ListView.separated(
         separatorBuilder: (_, __) {
           return const SizedBox(
-            height: 15,
+            height: 20,
           );
         },
-        padding: const EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.only(top: 20, bottom: 40),
         shrinkWrap: true,
         itemCount: lessonList.length,
         itemBuilder: (_, index) {
@@ -213,7 +211,7 @@ class _CustomTabViewState extends State<CustomTabView> {
       },
       child: Container(
         padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * .10, vertical: 15),
+            horizontal: MediaQuery.of(context).size.width * .08, vertical: 15),
         decoration: BoxDecoration(
           color: widget.index == index ? kPrimaryColor : null,
           borderRadius: BorderRadius.circular(10),
@@ -263,25 +261,27 @@ class _EnrollBottomSheetState extends State<EnrollBottomSheet> {
         horizontal: 30.0,
       ),
       child: Row(
-        children: const [
+        children: [
           CustomIconButton(
+            onTap: () {},
             height: 45,
             width: 45,
-            child: Icon(
+            child: const Icon(
               Icons.favorite,
               color: Colors.pink,
               size: 30,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
           Expanded(
             child: CustomIconButton(
+              onTap: () {},
               color: kPrimaryColor,
               height: 45,
               width: 45,
-              child: Text(
+              child: const Text(
                 "Enroll Now",
                 style: TextStyle(
                   color: Colors.white,
@@ -301,6 +301,7 @@ class CustomIconButton extends StatelessWidget {
   final double height;
   final double width;
   final Color? color;
+  final VoidCallback onTap;
 
   const CustomIconButton({
     Key? key,
@@ -308,6 +309,7 @@ class CustomIconButton extends StatelessWidget {
     required this.height,
     required this.width,
     this.color = Colors.white,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -316,7 +318,7 @@ class CustomIconButton extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
         child: Center(child: child),
-        onTap: () {},
+        onTap: onTap,
       ),
       height: height,
       width: width,
