@@ -1,6 +1,7 @@
 import 'package:education_app/constants/color.dart';
 import 'package:education_app/constants/size.dart';
 import 'package:education_app/models/category.dart';
+import 'package:education_app/screens/course_screen.dart';
 import 'package:education_app/screens/details_screen.dart';
 import 'package:education_app/widgets/circle_button.dart';
 import 'package:flutter/material.dart';
@@ -98,7 +99,7 @@ class CategoryCard extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const DetailsScreen(),
+          builder: (context) => const CourseScreen(),
         ),
       ),
       child: Container(

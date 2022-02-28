@@ -9,7 +9,11 @@ import 'package:video_player/video_player.dart';
 import '../widgets/lesson_card.dart';
 
 class DetailsScreen extends StatefulWidget {
-  const DetailsScreen({Key? key}) : super(key: key);
+  final String title;
+  const DetailsScreen({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
 
   @override
   _DetailsScreenState createState() => _DetailsScreenState();
@@ -39,10 +43,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 IntrinsicHeight(
                   child: Stack(
                     children: [
-                      const Align(
+                      Align(
                         child: Text(
-                          'Development',
-                          style: TextStyle(
+                          widget.title,
+                          style: const TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 18,
                           ),

@@ -12,6 +12,11 @@ class Category {
 
 List<Category> categoryList = [
   Category(
+    name: 'Development',
+    noOfCourses: 55,
+    thumbnail: 'assets/icons/laptop.jpg',
+  ),
+  Category(
     name: 'Accounting',
     noOfCourses: 20,
     thumbnail: 'assets/icons/accounting.jpg',
@@ -26,9 +31,4 @@ List<Category> categoryList = [
     noOfCourses: 25,
     thumbnail: 'assets/icons/design.jpg',
   ),
-  Category(
-    name: 'Development',
-    noOfCourses: 55,
-    thumbnail: 'assets/icons/laptop.jpg',
-  )
 ];
