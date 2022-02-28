@@ -27,13 +27,10 @@ class _CourseScreenState extends State<CourseScreen> {
                 IntrinsicHeight(
                   child: Stack(
                     children: [
-                      const Align(
+                      Align(
                         child: Text(
                           'Development',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 18,
-                          ),
+                          style: Theme.of(context).textTheme.displayMedium,
                         ),
                       ),
                       Positioned(

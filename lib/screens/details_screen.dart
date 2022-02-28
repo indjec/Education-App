@@ -45,11 +45,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     children: [
                       Align(
                         child: Text(
-                          widget.title,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 18,
-                          ),
+                          "Flutter",
+                          style: Theme.of(context).textTheme.displayMedium,
                         ),
                       ),
                       Positioned(
@@ -72,7 +69,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   height: 15,
                 ),
                 const Text(
-                  "Figma UI UX Design Essentials",
+                  "Futter Novice to Ninja",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 18,
